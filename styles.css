@@ -476,12 +476,33 @@ body {
 
   .quick-nav {
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
     right: 1rem;
+    width: min(220px, calc(100vw - 2rem));
     max-width: calc(100vw - 2rem);
+    border-radius: 12px;
+    overflow: hidden;
   }
 
   .quick-nav-links {
-    overflow-x: auto;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    overflow-x: visible;
+  }
+
+  .quick-nav.is-collapsed {
+    width: fit-content;
+  }
+
+  .quick-nav-toggle,
+  .quick-nav-links a {
+    border-radius: 6px;
+  }
+
+  .quick-nav-toggle {
+    justify-content: space-between;
   }
 
   .hero h2 {

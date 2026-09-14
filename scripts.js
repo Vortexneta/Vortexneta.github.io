@@ -17,8 +17,14 @@
 // 2. Lógica para Expandir y Contraer la Galería
 const loadMoreBtn = document.getElementById('loadMoreBtn');
 const imagesPerLoad = 8; // Fotos a revelar por cada clic
-const initialVisibleCount = 8; // Cantidad de fotos que quedan visibles al retraer
 const allGalleryLinks = Array.from(document.querySelectorAll('.gallery-grid a'));
+const initialVisibleCount = window.matchMedia('(max-width: 768px)').matches ? 4 : 8;
+
+allGalleryLinks.forEach((link, index) => {
+  if (index >= initialVisibleCount) {
+    link.classList.add('hidden-img');
+  }
+});
 
 loadMoreBtn.addEventListener('click', () => {
   const hiddenImages = document.querySelectorAll('.gallery-grid a.hidden-img');
@@ -63,13 +69,13 @@ const updateQuickNav = () => {
 quickNavToggle.addEventListener('click', () => {
   const isCollapsed = quickNav.classList.toggle('is-collapsed');
   quickNavToggle.setAttribute('aria-expanded', String(!isCollapsed));
-  quickNavIcon.textContent = isCollapsed ? '+' : '−';
+  quickNavIcon.textContent = isCollapsed ? '▼' : '▲';
 });
 
 quickNavLinks.addEventListener('click', () => {
   quickNav.classList.remove('is-collapsed');
   quickNavToggle.setAttribute('aria-expanded', 'true');
-  quickNavIcon.textContent = '−';
+  quickNavIcon.textContent = '▲';
 });
 
 window.addEventListener('scroll', updateQuickNav, { passive: true });
