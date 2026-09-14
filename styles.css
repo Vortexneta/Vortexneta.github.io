@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. RESET Y VARIABLES (Paleta de Colores Gastronómica)
-   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
@@ -10,10 +7,10 @@
 }
 
 :root {
-  --primary-color: #e30620;       /* Rojo principal del logo */
+  --primary-color: #e30620;
   --primary-hover: #b80018;
-  --bg-dark: #111827;             /* Gris oscuro para contraste */
-  --bg-light: #f9fafb;            /* Fondo suave */
+  --bg-dark: #111827;
+  --bg-light: #f9fafb;
   --text-dark: #1f2937;
   --text-muted: #6b7280;
   --white: #ffffff;
@@ -31,9 +28,10 @@ html {
   background-color: var(--bg-light);
 }
 
-/* ==========================================================================
-   2. ESTILOS GENERALES Y BOTONES
-   ========================================================================== */
+body {
+  overflow-x: hidden;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -105,9 +103,6 @@ html {
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
 }
 
-/* ==========================================================================
-   3. NAVEGACIÓN (BARRA SUPERIOR)
-   ========================================================================== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -124,8 +119,13 @@ html {
 .logo h1 {
   font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
   color: var(--text-dark);
+}
+
+.logo img {
+  display: block;
+  max-width: 200px;
+  height: auto;
 }
 
 .navbar nav ul {
@@ -157,13 +157,9 @@ html {
   background-color: var(--primary-hover);
 }
 
-/* ==========================================================================
-   4. SECCIÓN HERO (PORTADA)
-   ========================================================================== */
 .hero {
   min-height: 85vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), 
-              url('imagenes/portada.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('imagenes/portada.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,9 +192,6 @@ html {
   justify-content: center;
 }
 
-/* ==========================================================================
-   5. TARJETAS DE SERVICIOS
-   ========================================================================== */
 .grid-cards {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -235,7 +228,6 @@ html {
 .card-body h3 {
   font-size: 1.3rem;
   margin-bottom: 0.6rem;
-  color: var(--text-dark);
 }
 
 .card-body p {
@@ -244,51 +236,76 @@ html {
   line-height: 1.6;
 }
 
-/* ==========================================================================
-   6. SECCIÓN "NOSOTROS" / CARACTERÍSTICAS
-   ========================================================================== */
-.features {
+.chef-profile {
   background-color: var(--white);
   padding: 5rem 1.5rem;
-  text-align: center;
 }
 
-.features h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2.5rem;
-}
-
-.features-grid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1100px;
+.chef-profile-content {
+  max-width: 1050px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 4rem;
 }
 
-.feature-item {
-  flex: 1 1 280px;
-  padding: 2rem 1.5rem;
+.chef-image-wrapper {
+  overflow: hidden;
   border-radius: var(--border-radius);
-  background-color: var(--bg-light);
-  border: 1px solid #edf2f7;
+  box-shadow: var(--shadow-lg);
 }
 
-.feature-item h3 {
+.chef-image-wrapper img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.eyebrow {
   color: var(--primary-color);
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
 }
 
-.feature-item p {
+.chef-copy h2 {
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin-bottom: 0.45rem;
+}
+
+.chef-role {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.chef-copy > p:not(.eyebrow):not(.chef-role) {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
 }
 
-/* ==========================================================================
-   7. GALERÍA DE IMÁGENES
-   ========================================================================== */
+.chef-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.chef-values span {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(227, 6, 32, 0.25);
+  border-radius: 999px;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -320,9 +337,6 @@ html {
   transform: scale(1.1);
 }
 
-/* ==========================================================================
-   8. FOOTER / CONTACTO
-   ========================================================================== */
 .footer {
   background-color: var(--bg-dark);
   color: var(--white);
@@ -341,7 +355,6 @@ html {
 .contact-info h3, .cta-box h3 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: var(--white);
 }
 
 .contact-info p, .cta-box p {
@@ -362,9 +375,6 @@ html {
   font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   9. ADAPTACIÓN A DISPOSITIVOS MÓVILES (RESPONSIVE)
-   ========================================================================== */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -395,6 +405,24 @@ html {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
   }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chef-profile-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .chef-image-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .chef-copy h2 {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 520px) {
@@ -403,12 +431,10 @@ html {
   }
 }
 
-/* Oculta las imágenes secundarias inicialmente */
 .gallery-grid a.hidden-img {
   display: none;
 }
 
-/* Contenedor del botón Ver más */
 .load-more-container {
   text-align: center;
   margin-top: 2.5rem;
