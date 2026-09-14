@@ -163,7 +163,7 @@ body {
   top: 1rem;
   right: 1.5rem;
   z-index: 1100;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.8rem;
   padding: 0.45rem;
@@ -475,6 +475,7 @@ body {
   }
 
   .quick-nav {
+    display: flex;
     right: 1rem;
     max-width: calc(100vw - 2rem);
   }
