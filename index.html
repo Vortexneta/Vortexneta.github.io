@@ -98,10 +98,17 @@
   <div class="service-modal" id="serviceModal" aria-hidden="true">
     <div class="service-modal-panel" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
       <button class="service-modal-close" id="serviceModalClose" type="button" aria-label="Cerrar detalles">&times;</button>
-      <p class="eyebrow">Propuesta Panzano</p>
-      <h2 id="serviceModalTitle"></h2>
-      <p id="serviceModalDescription"></p>
-      <a class="btn btn-primary" href="#contacto" id="serviceModalCta">Consultar esta propuesta</a>
+      <div class="service-modal-content">
+        <div class="service-modal-copy">
+          <p class="eyebrow">Propuesta Panzano</p>
+          <h2 id="serviceModalTitle"></h2>
+          <p id="serviceModalDescription"></p>
+          <div id="serviceModalItems" class="service-modal-items"></div>
+          <a class="btn btn-primary" href="#contacto" id="serviceModalCta">Consultar esta propuesta</a>
+        </div>
+      </div>
+      <button class="service-modal-arrow service-modal-prev" id="serviceModalPrev" type="button" aria-label="Servicio anterior">&#9664;</button>
+      <button class="service-modal-arrow service-modal-next" id="serviceModalNext" type="button" aria-label="Servicio siguiente">&#9654;</button>
     </div>
   </div>
 
