@@ -104,6 +104,19 @@ body {
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
 }
 
+.btn-instagram {
+  margin-top: 0.8rem;
+  background-color: #d62976;
+  color: var(--white);
+}
+
+.btn-instagram:hover {
+  background-color: #b51f63;
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(214, 41, 118, 0.35);
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -298,6 +311,27 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+.service-card {
+  cursor: pointer;
+}
+
+.service-card:hover,
+.service-card:focus-visible {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white);
+}
+
+.service-card:hover .card-body p,
+.service-card:focus-visible .card-body p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.service-card:focus-visible {
+  outline: 3px solid rgba(227, 6, 32, 0.35);
+  outline-offset: 4px;
+}
+
 .card img {
   width: 100%;
   height: 200px;
@@ -318,6 +352,72 @@ body {
   color: var(--text-muted);
   font-size: 0.9rem;
   line-height: 1.5;
+}
+
+.service-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background-color: rgba(17, 24, 39, 0.58);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.service-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.service-modal-panel {
+  position: relative;
+  width: min(680px, 100%);
+  padding: clamp(2rem, 5vw, 4rem);
+  background-color: var(--white);
+  border-top: 8px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  transform: translateY(1rem) scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+.service-modal.is-open .service-modal-panel {
+  transform: translateY(0) scale(1);
+}
+
+.service-modal-panel h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.service-modal-panel > p:not(.eyebrow) {
+  max-width: 55ch;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.service-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.service-modal-close:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 .chef-profile {

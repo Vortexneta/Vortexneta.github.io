@@ -60,7 +60,7 @@
     <h2 class="section-title">Nuestras Propuestas</h2>
     <div class="grid-cards">
       
-      <article class="card">
+      <article class="card service-card" data-service="menu" tabindex="0" role="button" aria-label="Ver detalles del Menú">
         <img src="imagenes/menu.jpg" alt="Evento Formal">
         <div class="card-body">
           <h3>Menú</h3>
@@ -68,7 +68,7 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card service-card" data-service="salados" tabindex="0" role="button" aria-label="Ver detalles de Salados y Finger Food">
         <img src="imagenes/salado.jpg" alt="Mesa de bocados salados y finger food">
         <div class="card-body">
           <h3>Salados & Finger Food</h3>
@@ -76,7 +76,7 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card service-card" data-service="dulce" tabindex="0" role="button" aria-label="Ver detalles de Mesa Dulce y Pastelería">
         <img src="imagenes/dulce.jpg" alt="Mesa Dulce">
         <div class="card-body">
           <h3>Mesa Dulce & Pastelería</h3>
@@ -84,7 +84,7 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card service-card" data-service="viandas" tabindex="0" role="button" aria-label="Ver detalles de Viandas">
         <img src="imagenes/viandas.jpg" alt="Viandas caseras">
         <div class="card-body">
           <h3>Viandas</h3>
@@ -94,6 +94,16 @@
 
     </div>
   </section>
+
+  <div class="service-modal" id="serviceModal" aria-hidden="true">
+    <div class="service-modal-panel" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+      <button class="service-modal-close" id="serviceModalClose" type="button" aria-label="Cerrar detalles">&times;</button>
+      <p class="eyebrow">Propuesta Panzano</p>
+      <h2 id="serviceModalTitle"></h2>
+      <p id="serviceModalDescription"></p>
+      <a class="btn btn-primary" href="#contacto" id="serviceModalCta">Consultar esta propuesta</a>
+    </div>
+  </div>
 
   <!-- 4. PERFIL DEL CHEF -->
   <section id="nosotros" class="chef-profile">
@@ -204,6 +214,7 @@
         <h3>Contactanos</h3>
         <p>Email: consultas@panzanocatering.com.ar</p>
         <p>Teléfono / WhatsApp: +54 9 11 1234-5678</p>
+        <a href="https://www.instagram.com/panzanocatering/" class="btn btn-instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
       <div class="cta-box">
         <h3>¿Tenés una fecha en mente?</h3>

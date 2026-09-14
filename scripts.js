@@ -20,6 +20,69 @@ const imagesPerLoad = 8; // Fotos a revelar por cada clic
 const allGalleryLinks = Array.from(document.querySelectorAll('.gallery-grid a'));
 const initialVisibleCount = window.matchMedia('(max-width: 768px)').matches ? 4 : 8;
 
+const serviceDetails = {
+  menu: {
+    title: 'Menú',
+    description: 'Propuestas gastronómicas pensadas para cada ocasión, con opciones de entrada, plato principal y postre adaptadas a tu evento.',
+  },
+  salados: {
+    title: 'Salados & Finger Food',
+    description: 'Mini sándwiches, pinchos, empanadas y bocados calientes para compartir en recepciones, reuniones y celebraciones.',
+  },
+  dulce: {
+    title: 'Mesa Dulce & Pastelería',
+    description: 'Brownies, tartas y bocados individuales decorados con merengue, chocolate y sabores caseros para cerrar cada encuentro.',
+  },
+  viandas: {
+    title: 'Viandas',
+    description: 'Boxes individuales con sándwiches, piezas de panadería, dulces y bebidas, listos para entregar y disfrutar.',
+  },
+};
+
+const serviceCards = document.querySelectorAll('.service-card');
+const serviceModal = document.getElementById('serviceModal');
+const serviceModalTitle = document.getElementById('serviceModalTitle');
+const serviceModalDescription = document.getElementById('serviceModalDescription');
+const serviceModalClose = document.getElementById('serviceModalClose');
+
+const closeServiceModal = () => {
+  serviceModal.classList.remove('is-open');
+  serviceModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+};
+
+const openServiceModal = (serviceKey) => {
+  const service = serviceDetails[serviceKey];
+  if (!service) return;
+
+  serviceModalTitle.textContent = service.title;
+  serviceModalDescription.textContent = service.description;
+  serviceModal.classList.add('is-open');
+  serviceModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  serviceModalClose.focus();
+};
+
+serviceCards.forEach((card) => {
+  card.addEventListener('click', () => openServiceModal(card.dataset.service));
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openServiceModal(card.dataset.service);
+    }
+  });
+});
+
+serviceModalClose.addEventListener('click', closeServiceModal);
+serviceModal.addEventListener('click', (event) => {
+  if (event.target === serviceModal) closeServiceModal();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && serviceModal.classList.contains('is-open')) {
+    closeServiceModal();
+  }
+});
+
 allGalleryLinks.forEach((link, index) => {
   if (index >= initialVisibleCount) {
     link.classList.add('hidden-img');
