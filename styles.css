@@ -370,6 +370,7 @@ html {
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
+    position: static;
   }
 
   .navbar nav ul {
