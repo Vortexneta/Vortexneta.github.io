@@ -47,3 +47,30 @@ loadMoreBtn.addEventListener('click', () => {
     loadMoreBtn.textContent = 'Ver menos';
   }
 });
+
+// 3. Navegación rápida al salir de la portada
+const hero = document.querySelector('.hero');
+const quickNav = document.getElementById('quickNav');
+const quickNavToggle = document.getElementById('quickNavToggle');
+const quickNavLinks = document.getElementById('quickNavLinks');
+const quickNavIcon = quickNavToggle.querySelector('.quick-nav-icon');
+
+const updateQuickNav = () => {
+  const shouldShow = window.scrollY > hero.offsetHeight - 120;
+  quickNav.classList.toggle('is-visible', shouldShow);
+};
+
+quickNavToggle.addEventListener('click', () => {
+  const isCollapsed = quickNav.classList.toggle('is-collapsed');
+  quickNavToggle.setAttribute('aria-expanded', String(!isCollapsed));
+  quickNavIcon.textContent = isCollapsed ? '+' : '−';
+});
+
+quickNavLinks.addEventListener('click', () => {
+  quickNav.classList.remove('is-collapsed');
+  quickNavToggle.setAttribute('aria-expanded', 'true');
+  quickNavIcon.textContent = '−';
+});
+
+window.addEventListener('scroll', updateQuickNav, { passive: true });
+updateQuickNav();
