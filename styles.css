@@ -448,6 +448,28 @@ body {
   font-weight: 600;
 }
 
+.service-modal-item-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.service-modal-item-media.has-image {
+  overflow: hidden;
+  border: 0;
+  background-color: transparent;
+}
+
+.service-modal-item-media.has-image img {
+  display: block;
+  border-radius: inherit;
+}
+
+.service-modal-item-media.crop-image img {
+  transform: scale(1.06);
+}
+
 .service-modal-item h3 {
   margin-bottom: 0.25rem;
   font-size: 1rem;

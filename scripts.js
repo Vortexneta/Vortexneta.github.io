@@ -25,20 +25,20 @@ const serviceDetails = {
     title: 'Menú',
     description: 'Propuestas gastronómicas pensadas para cada ocasión, con opciones de entrada, plato principal y postre adaptadas a tu evento.',
     items: [
-      { name: 'Brusqueta de jamón', description: 'Jamón crudo o serrano, rúcula y pan tostado.' },
-      { name: 'Brusqueta Caprese', description: 'Mozzarella, tomate y albahaca fresca.' },
-      { name: 'Tostón de tomate', description: 'Concassé de tomates frescos, ajo y albahaca.' },
-      { name: 'Tostón de berenjena', description: 'Berenjenas escabechadas o pasta de vegetales.' },
+      { name: 'Brusqueta de jamón', description: 'Jamón crudo o serrano, rúcula y pan tostado.', image: 'imagenes/interfaces/Bruzqueta de jamon crudo.png' },
+      { name: 'Brusqueta Caprese', description: 'Mozzarella, tomate y albahaca fresca.', image: 'imagenes/interfaces/Bruzqueta capprese.png', cropImage: true },
+      { name: 'Tostón de tomate', description: 'Concassé de tomates frescos, ajo y albahaca.', image: 'imagenes/interfaces/Bruzqueta de tomate.png', cropImage: true },
+      { name: 'Tostón de berenjena', description: 'Berenjenas escabechadas o pasta de vegetales.', image: 'imagenes/interfaces/Bruzqueta de berenjena.png' },
     ],
   },
   salados: {
     title: 'Salados & Finger Food',
     description: 'Mini sándwiches, pinchos, empanadas y bocados calientes para compartir en recepciones, reuniones y celebraciones.',
     items: [
-      { name: 'Mini sándwiches', description: 'Sándwiches de miga y mini burgers en panes brioche, ciabatta y sésamo.' },
-      { name: 'Bocados crujientes', description: 'Chicken tenders individuales acompañados de salsas dip.' },
-      { name: 'Pinchos', description: 'Brochetas Caprese, albóndigas y croquetas en escarbadientes.' },
-      { name: 'Empanadas y canastitas', description: 'Mini empanadas de carne o pollo y canastitas saladas de vegetales.' },
+      { name: 'Mini sándwiches', description: 'Sándwiches de miga y mini burgers en panes brioche, ciabatta y sésamo.', image: 'imagenes/interfaces/Mini sándwiches.png' },
+      { name: 'Bocados crujientes', description: 'Chicken tenders individuales acompañados de salsas dip.', image: 'imagenes/interfaces/Bocados crujientes.png' },
+      { name: 'Pinchos', description: 'Brochetas Caprese, albóndigas, croquetas y ricota de cabra quemada con berenjena, rúcula y tomates secos.' },
+      { name: 'Empanadas y canastitas', description: 'Mini empanadas de carne o pollo y canastitas saladas de vegetales.', image: 'imagenes/interfaces/Empanadas y canastitas.png' },
     ],
   },
   dulce: {
@@ -47,8 +47,8 @@ const serviceDetails = {
     items: [
       { name: 'Brownies y squares', description: 'Chocolate, nuez, dulce de leche y merengue flameado.' },
       { name: 'Lingotes y mini Lemon Pie', description: 'Marquise, mousse de chocolate y tartas individuales con merengue.' },
-      { name: 'Muffins y alfajores', description: 'Muffins, cupcakes, alfajores de maicena y de masa sableé.' },
-      { name: 'Panadería dulce', description: 'Croissants, medialunas, churros, budines, mini scons y shots de postre.' },
+      { name: 'Alfajores de maicena', description: 'Alfajorcitos de maicena rellenos de dulce de leche y coco rallado.', image: 'imagenes/interfaces/Alfajorcitos.jpg' },
+      { name: 'Medialunas', description: 'Medialunas de manteca.', image: 'imagenes/interfaces/medialunas.jpg' },
       { name: 'Pinchos de fruta', description: 'Brochetas de frutilla, ananá y kiwi.' },
     ],
   },
@@ -90,7 +90,28 @@ const renderService = (serviceKey) => {
   serviceModalItems.replaceChildren(...service.items.map((item) => {
     const row = document.createElement('article');
     row.className = 'service-modal-item';
-    row.innerHTML = `<div class="service-modal-item-media" aria-label="Espacio para imagen de ${item.name}"><span>Imagen</span></div><div><h3>${item.name}</h3><p>${item.description}</p></div>`;
+    const media = document.createElement('div');
+    media.className = 'service-modal-item-media';
+    media.setAttribute('aria-label', item.image ? `Imagen de ${item.name}` : `Espacio para imagen de ${item.name}`);
+
+    if (item.image) {
+      media.classList.add('has-image');
+      if (item.cropImage) media.classList.add('crop-image');
+      const image = document.createElement('img');
+      image.src = item.image;
+      image.alt = item.name;
+      media.appendChild(image);
+    } else {
+      media.innerHTML = '<span>Imagen</span>';
+    }
+
+    const copy = document.createElement('div');
+    const title = document.createElement('h3');
+    title.textContent = item.name;
+    const description = document.createElement('p');
+    description.textContent = item.description;
+    copy.append(title, description);
+    row.append(media, copy);
     return row;
   }));
   serviceModalPrev.hidden = currentServiceIndex === 0;
