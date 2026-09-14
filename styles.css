@@ -560,6 +560,12 @@ body {
   overflow: hidden;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+
+.chef-image-wrapper:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
 .chef-image-wrapper img {
