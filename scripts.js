@@ -22,44 +22,58 @@ const initialVisibleCount = window.matchMedia('(max-width: 768px)').matches ? 4 
 
 const serviceDetails = {
   menu: {
-    title: 'Menú',
-    description: 'Propuestas gastronómicas pensadas para cada ocasión, con opciones de entrada, plato principal y postre adaptadas a tu evento.',
+    title: 'Plato Principal',
+    description: 'Opciones de plato principal pensadas para cada ocasión y adaptadas a tu evento.',
     items: [
-      { name: 'Brusqueta de jamón', description: 'Jamón crudo o serrano, rúcula y pan tostado.', image: 'imagenes/interfaces/Bruzqueta de jamon crudo.png' },
-      { name: 'Brusqueta Caprese', description: 'Mozzarella, tomate y albahaca fresca.', image: 'imagenes/interfaces/Bruzqueta capprese.png', cropImage: true },
-      { name: 'Tostón de tomate', description: 'Concassé de tomates frescos, ajo y albahaca.', image: 'imagenes/interfaces/Bruzqueta de tomate.png', cropImage: true },
-      { name: 'Tostón de berenjena', description: 'Berenjenas escabechadas o pasta de vegetales.', image: 'imagenes/interfaces/Bruzqueta de berenjena.png' },
+      { name: 'Ñoquis', description: 'Ñoquis suaves acompañados de salsa y queso rallado, una opción casera y reconfortante.', image: 'imagenes/interfaces/ñoquis.png' },
+      { name: 'Pizza de jamón crudo y rúcula', description: 'Pizza con mozzarella, jamón crudo y rúcula fresca.', image: 'imagenes/interfaces/pizza jamon crudo y rucula.png' },
+      { name: 'Pizza de morrones', description: 'Pizza horneada con mozzarella y morrones asados.', image: 'imagenes/interfaces/pizza morrones.jpg' },
     ],
   },
   salados: {
     title: 'Salados & Finger Food',
-    description: 'Mini sándwiches, pinchos, empanadas y bocados calientes para compartir en recepciones, reuniones y celebraciones.',
+    description: 'Pinchos, bocados calientes y opciones saladas para compartir en recepciones, reuniones y celebraciones.',
     items: [
-      { name: 'Mini sándwiches', description: 'Sándwiches de miga y mini burgers en panes brioche, ciabatta y sésamo.', image: 'imagenes/interfaces/Mini sándwiches.png' },
       { name: 'Bocados crujientes', description: 'Chicken tenders individuales acompañados de salsas dip.', image: 'imagenes/interfaces/Bocados crujientes.png' },
-      { name: 'Pinchos', description: 'Brochetas Caprese, albóndigas, croquetas y ricota de cabra quemada con berenjena, rúcula y tomates secos.' },
-      { name: 'Empanadas y canastitas', description: 'Mini empanadas de carne o pollo y canastitas saladas de vegetales.', image: 'imagenes/interfaces/Empanadas y canastitas.png' },
+      { name: 'Brusqueta Caprese', description: 'Mozzarella, tomate y albahaca fresca.', image: 'imagenes/interfaces/Bruzqueta capprese.png', cropImage: true },
+      { name: 'Brusqueta de berenjena', description: 'Berenjenas escabechadas o pasta de vegetales.', image: 'imagenes/interfaces/Bruzqueta de berenjena.png' },
+      { name: 'Brusqueta de jamón', description: 'Jamón crudo o serrano, rúcula y pan tostado.', image: 'imagenes/interfaces/Bruzqueta de jamon crudo.png' },
+      { name: 'Brusqueta de tomate', description: 'Concassé de tomates frescos, ajo y albahaca.', image: 'imagenes/interfaces/Bruzqueta de tomate.png', cropImage: true },
+      { name: 'Canastitas de jamón y queso', description: 'Pequeñas canastitas horneadas con relleno cremoso de jamón y queso.', image: 'imagenes/interfaces/canastitas de jamon y queso.png' },
+      { name: 'Chipa', description: 'Bocados horneados de almidón de mandioca y queso, dorados por fuera y tiernos por dentro.', image: 'imagenes/interfaces/chipa.png' },
+      { name: 'Pinchos Caprese', description: 'Brochetas de tomate cherry, mozzarella y albahaca, terminadas con un toque de oliva.', image: 'imagenes/interfaces/pincho capresse.jpg' },
+      { name: 'Roles de berenjena', description: 'Berenjena grillada enrollada con relleno cremoso, acompañada de rúcula y tomates secos.', image: 'imagenes/interfaces/roles de berenjena.jpg' },
+      { name: 'Sanguchitos de jamón y queso', description: 'Pan tierno relleno con jamón cocido y queso, en tamaño ideal para servir como finger food.', image: 'imagenes/interfaces/sanguchito de jamon y queso.png' },
+      { name: 'Sanguchitos de miga Caprese', description: 'Sándwiches de miga rellenos con tomate, mozzarella y albahaca fresca.', image: 'imagenes/interfaces/sanguchito de miga capresse.png' },
+      { name: 'Sanguchitos de miga de jamón y queso', description: 'Clásicos sándwiches de miga con jamón cocido y queso, preparados en tamaño individual.', image: 'imagenes/interfaces/sanguchito de miga jamon y queso.png' },
+      { name: 'Sanguchitos de pastrón y pepinillo', description: 'Pastrón, pepinillos y hojas verdes en pan suave, con un contraste fresco y sabroso.', image: 'imagenes/interfaces/sanguchito de pastrone y pepinillo.png' },
+      { name: 'Sanguchitos de rúcula y jamón crudo', description: 'Pan suave con jamón crudo, rúcula fresca y un toque cremoso.', image: 'imagenes/interfaces/sanguchito rucula y jamon crudo.png' },
     ],
   },
   dulce: {
     title: 'Mesa Dulce & Pastelería',
     description: 'Brownies, tartas y bocados individuales decorados con merengue, chocolate y sabores caseros para cerrar cada encuentro.',
     items: [
-      { name: 'Brownies y squares', description: 'Chocolate, nuez, dulce de leche y merengue flameado.' },
-      { name: 'Lingotes y mini Lemon Pie', description: 'Marquise, mousse de chocolate y tartas individuales con merengue.' },
       { name: 'Alfajores de maicena', description: 'Alfajorcitos de maicena rellenos de dulce de leche y coco rallado.', image: 'imagenes/interfaces/Alfajorcitos.jpg' },
+      { name: 'Brownies', description: 'Brownies de chocolate con nuez, dulce de leche y merengue flameado.', image: 'imagenes/interfaces/brownie.jpg' },
+      { name: 'Cheesecake', description: 'Cheesecake individual con cubierta de frutos rojos y crema chantilly.', image: 'imagenes/interfaces/cheesecake.png' },
+      { name: 'Chocotorta', description: 'Squares de chocotorta elaborados con galletas de chocolate y dulce de leche.', image: 'imagenes/interfaces/chocotorta.jpg' },
+      { name: 'Flan casero', description: 'Flan suave de huevo con caramelo, acompañado de dulce de leche.', image: 'imagenes/interfaces/flan.png' },
+      { name: 'Lemon Pie', description: 'Tarta individual de crema de limón, base crocante y merengue flameado.', image: 'imagenes/interfaces/lemon pie.jpg' },
       { name: 'Medialunas', description: 'Medialunas de manteca.', image: 'imagenes/interfaces/medialunas.jpg' },
+      { name: 'Muffins de chocolate', description: 'Muffins húmedos de chocolate con cobertura cremosa y granas.', image: 'imagenes/interfaces/muffins.png' },
       { name: 'Pinchos de fruta', description: 'Brochetas de frutilla, ananá y kiwi.' },
+      { name: 'Pies de manzana', description: 'Bocados de masa crocante rellenos con manzana y un toque de canela.', image: 'imagenes/interfaces/pies de manzana.jpg' },
     ],
   },
   viandas: {
     title: 'Viandas',
     description: 'Boxes individuales con sándwiches, piezas de panadería, dulces y bebidas, listos para entregar y disfrutar.',
     items: [
-      { name: 'Sándwiches salados', description: 'Sándwiches de miga o croissants rellenos de jamón y queso.' },
-      { name: 'Sándwich de semillas', description: 'Pan de semillas, bagel o ciabatta pequeño con relleno a elección.' },
       { name: 'Alfajorcitos', description: 'Alfajores de maicena envasados individualmente.' },
       { name: 'Bebida y branding', description: 'Bebida individual y tarjeta de bienvenida personalizada.' },
+      { name: 'Sándwich de semillas', description: 'Pan de semillas, bagel o ciabatta pequeño con relleno a elección.' },
+      { name: 'Sándwiches salados', description: 'Sándwiches de miga o croissants rellenos de jamón y queso.' },
     ],
   },
 };
@@ -69,11 +83,35 @@ const serviceModal = document.getElementById('serviceModal');
 const serviceModalTitle = document.getElementById('serviceModalTitle');
 const serviceModalDescription = document.getElementById('serviceModalDescription');
 const serviceModalItems = document.getElementById('serviceModalItems');
+const serviceModalCta = document.getElementById('serviceModalCta');
 const serviceModalClose = document.getElementById('serviceModalClose');
 const serviceModalPrev = document.getElementById('serviceModalPrev');
 const serviceModalNext = document.getElementById('serviceModalNext');
+const contactSection = document.getElementById('contacto');
+const contactLinks = document.querySelectorAll('a[href="#contacto"]');
+const whatsappButton = document.querySelector('.btn-whatsapp');
 const serviceOrder = ['menu', 'salados', 'dulce', 'viandas'];
 let currentServiceIndex = 0;
+let contactHighlightTimeout;
+let whatsappBounceTimeout;
+
+const highlightContactSection = (event) => {
+  clearTimeout(whatsappBounceTimeout);
+  whatsappButton.classList.remove('whatsapp-attention');
+  void whatsappButton.offsetWidth;
+  whatsappButton.classList.add('whatsapp-attention');
+  whatsappBounceTimeout = setTimeout(() => {
+    whatsappButton.classList.remove('whatsapp-attention');
+  }, 4000);
+
+  clearTimeout(contactHighlightTimeout);
+  contactSection.classList.remove('contact-highlight');
+  void contactSection.offsetWidth;
+  contactSection.classList.add('contact-highlight');
+  contactHighlightTimeout = setTimeout(() => {
+    contactSection.classList.remove('contact-highlight');
+    }, 4000);
+};
 
 const closeServiceModal = () => {
   serviceModal.classList.remove('is-open');
@@ -146,8 +184,10 @@ serviceCards.forEach((card) => {
 });
 
 serviceModalClose.addEventListener('click', closeServiceModal);
+serviceModalCta.addEventListener('click', closeServiceModal);
 serviceModalPrev.addEventListener('click', () => showAdjacentService(-1));
 serviceModalNext.addEventListener('click', () => showAdjacentService(1));
+contactLinks.forEach((link) => link.addEventListener('click', highlightContactSection));
 serviceModal.addEventListener('click', (event) => {
   if (event.target === serviceModal) closeServiceModal();
 });
