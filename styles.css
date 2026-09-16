@@ -508,7 +508,8 @@ body {
 }
 
 .service-modal-arrow {
-  position: absolute;
+  position: fixed;
+  z-index: 1;
   top: 50%;
   display: grid;
   width: 2.5rem;
@@ -540,11 +541,11 @@ body {
 }
 
 .service-modal-prev {
-  left: 1rem;
+  left: max(1rem, calc(50vw - min(480px, calc(50vw - 1.5rem)) - 3.5rem));
 }
 
 .service-modal-next {
-  right: 1rem;
+  right: max(1rem, calc(50vw - min(480px, calc(50vw - 1.5rem)) - 3.5rem));
 }
 
 .service-modal-close {
@@ -784,11 +785,12 @@ body {
   }
 
   .service-modal-copy {
-    padding: 3.75rem 0 0;
+    padding: 3.75rem 0 4.75rem;
   }
 
   .service-modal-arrow {
-    top: 1.25rem;
+    top: auto;
+    bottom: max(1rem, env(safe-area-inset-bottom));
     transform: none;
   }
 
