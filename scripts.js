@@ -14,6 +14,26 @@
     },
   });
 
+// 1. Modo claro/oscuro
+const themeToggle = document.getElementById('themeToggle');
+const themeToggleIcon = document.getElementById('themeToggleIcon');
+const savedTheme = localStorage.getItem('panzano-theme');
+
+const setTheme = (isDark) => {
+  document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+  themeToggle.setAttribute('aria-label', isDark ? 'Activar modo claro' : 'Activar modo oscuro');
+  themeToggle.title = isDark ? 'Modo claro' : 'Modo oscuro';
+  themeToggleIcon.textContent = isDark ? '☾' : '☀';
+};
+
+setTheme(savedTheme === 'dark');
+themeToggle.addEventListener('click', () => {
+  const isDark = document.documentElement.dataset.theme !== 'dark';
+  setTheme(isDark);
+  localStorage.setItem('panzano-theme', isDark ? 'dark' : 'light');
+});
+
 // 2. Lógica para Expandir y Contraer la Galería
 const loadMoreBtn = document.getElementById('loadMoreBtn');
 const imagesPerLoad = 8; // Fotos a revelar por cada clic
