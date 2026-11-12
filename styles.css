@@ -428,6 +428,27 @@ html[data-theme="dark"] .service-modal-item-media:not(.has-image) {
   justify-content: center;
 }
 
+.hero-plan-cta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn-plan-event {
+  padding: 1rem 2.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  font-size: 1.05rem;
+}
+
+.btn-plan-event:hover,
+.btn-plan-event:focus-visible {
+  background-color: #1fb95b;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+}
+
 .grid-cards {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -837,6 +858,201 @@ html[data-theme="dark"] .service-modal-item-media:not(.has-image) {
   margin-top: 0.8rem;
 }
 
+.quick-event-inquiry {
+  display: grid;
+  justify-items: start;
+  gap: 0.35rem;
+  margin-top: 1.2rem;
+}
+
+.quick-event-inquiry > .btn {
+  margin-top: 0;
+}
+
+.quick-event-inquiry label {
+  font-weight: 600;
+}
+
+.quick-event-inquiry input {
+  width: min(100%, 20rem);
+  min-height: 2.8rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  background-color: var(--white);
+  color: #1f2937;
+  font: inherit;
+}
+
+.quick-event-inquiry input:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.55);
+  outline-offset: 2px;
+}
+
+.quick-event-inquiry-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  color: #d1d5db;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.quick-event-inquiry-hint span {
+  color: var(--whatsapp-green);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.event-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background-color: rgba(17, 24, 39, 0.68);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.event-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.event-modal-panel {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: calc(100vh - 2.5rem);
+  overflow-y: auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border-top: 8px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  background-color: var(--white);
+  color: var(--text-dark);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  transform: translateY(1rem) scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+.event-modal.is-open .event-modal-panel {
+  transform: translateY(0) scale(1);
+}
+
+.event-modal-content {
+  padding-top: 0.5rem;
+}
+
+.event-modal-content h2 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
+}
+
+.event-planner-intro {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.event-planner {
+  display: grid;
+  gap: 1rem;
+}
+
+.event-planner-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.event-planner-field {
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+}
+
+.event-planner-field-full {
+  grid-column: 1 / -1;
+}
+
+.event-planner-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.event-planner-field label span {
+  color: var(--primary-color);
+}
+
+.event-planner-field input,
+.event-planner-field select,
+.event-planner-field textarea {
+  width: 100%;
+  min-height: 2.8rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  background-color: var(--white);
+  color: #1f2937;
+  font: inherit;
+}
+
+.event-planner-field textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.event-planner-field input:focus-visible,
+.event-planner-field select:focus-visible,
+.event-planner-field textarea:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.55);
+  outline-offset: 2px;
+}
+
+.event-planner-required {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.event-planner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.event-planner-actions .btn {
+  margin-top: 0;
+}
+
+.event-planner-cancel {
+  border: 1px solid #9ca3af;
+  background-color: transparent;
+  color: var(--text-dark);
+}
+
+.event-planner-cancel:hover {
+  background-color: var(--bg-light);
+}
+
+html[data-theme="dark"] .event-modal-panel {
+  background-color: #24282c;
+}
+
+html[data-theme="dark"] .event-planner-field input,
+html[data-theme="dark"] .event-planner-field select,
+html[data-theme="dark"] .event-planner-field textarea {
+  border-color: #555c63;
+  background-color: #191c1f;
+  color: var(--text-dark);
+  color-scheme: dark;
+}
+
 .copy {
   text-align: center;
   padding: 1.5rem;
@@ -958,6 +1174,22 @@ html[data-theme="dark"] .service-modal-item-media:not(.has-image) {
 
   .footer-content {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .event-planner-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .event-planner-field-full {
+    grid-column: auto;
+  }
+
+  .event-planner-actions {
+    flex-direction: column-reverse;
+  }
+
+  .event-planner-actions .btn {
+    width: 100%;
   }
 
   .chef-profile-content {

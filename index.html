@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panzano Catering</title>
+  <link rel="icon" type="image/png" href="imagenes/icono.png">
   
   <!-- Estilos principales -->
   <link rel="stylesheet" href="styles.css">
@@ -39,6 +40,9 @@
     <div class="hero-content">
       <h2>Gastronomía inolvidable para tus momentos especiales</h2>
       <p>Nos encargamos del menú de tu casamiento, cumpleaños o evento corporativo con la mejor calidad y dedicación.</p>
+      <div class="hero-plan-cta">
+        <button class="btn btn-whatsapp btn-plan-event open-event-planner" type="button" aria-haspopup="dialog" aria-controls="eventPlannerModal">Planificar evento</button>
+      </div>
       <div class="hero-buttons">
         <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
         <a href="#servicios" class="btn btn-secondary">Ver Menús</a>
@@ -225,13 +229,78 @@
       <div class="cta-box">
         <h3>¿Tenés una fecha en mente?</h3>
         <p>Escribinos por WhatsApp para coordinar una degustación o cotización rápida.</p>
-        <a href="https://wa.me/5491124750836" class="btn btn-whatsapp" target="_blank">Escribir al WhatsApp</a>
+        <form class="quick-event-inquiry" id="quickEventInquiry">
+          <label for="quickEventDate">Fecha del evento</label>
+          <input id="quickEventDate" name="eventDate" type="date" aria-describedby="quickEventInquiryHint" required>
+          <p class="quick-event-inquiry-hint" id="quickEventInquiryHint">
+            <span aria-hidden="true">↓</span>
+            Elegí una fecha y tocá el botón para enviarla por WhatsApp.
+          </p>
+          <button type="submit" class="btn btn-whatsapp" id="quickEventInquiryButton">Consultar por WhatsApp</button>
+        </form>
       </div>
     </div>
     <div class="copy">
       <p>&copy; 2026 Panzano Catering</p>
     </div>
   </footer>
+
+  <div class="event-modal" id="eventPlannerModal" aria-hidden="true" inert>
+    <section class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="eventPlannerTitle" aria-describedby="eventPlannerDescription">
+      <button class="service-modal-close" id="closeEventPlanner" type="button" aria-label="Cerrar planificación">&times;</button>
+      <div class="event-modal-content">
+        <p class="eyebrow">Empecemos a organizar</p>
+        <h2 id="eventPlannerTitle" tabindex="-1">Planificá tu evento</h2>
+        <p id="eventPlannerDescription" class="event-planner-intro">Completá estos datos y te contactamos por WhatsApp con una propuesta.</p>
+        <form class="event-planner" id="eventPlanner">
+          <div class="event-planner-fields">
+            <div class="event-planner-field">
+              <label for="eventDate">Fecha del evento <span aria-hidden="true">*</span></label>
+              <input id="eventDate" name="eventDate" type="date" required>
+            </div>
+            <div class="event-planner-field">
+              <label for="guestCount">Cantidad de comensales <span aria-hidden="true">*</span></label>
+              <input id="guestCount" name="guestCount" type="number" min="1" step="1" placeholder="Ej.: 80" required>
+            </div>
+            <div class="event-planner-field">
+              <label for="eventType">Tipo de evento</label>
+              <select id="eventType" name="eventType">
+                <option value="">A definir</option>
+                <option value="Casamiento">Casamiento</option>
+                <option value="Cumpleaños">Cumpleaños</option>
+                <option value="Evento corporativo">Evento corporativo</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div class="event-planner-field">
+              <label for="eventMenu">¿Qué servicio te interesa?</label>
+              <select id="eventMenu" name="eventMenu">
+                <option value="">A definir</option>
+                <option value="Plato principal">Plato principal</option>
+                <option value="Salados y finger food">Salados y finger food</option>
+                <option value="Mesa dulce y pastelería">Mesa dulce y pastelería</option>
+                <option value="Viandas">Viandas</option>
+                <option value="Una propuesta combinada">Una propuesta combinada</option>
+              </select>
+            </div>
+            <div class="event-planner-field event-planner-field-full">
+              <label for="eventLocation">Localidad o lugar del evento</label>
+              <input id="eventLocation" name="eventLocation" type="text" autocomplete="address-level2" placeholder="Ej.: Palermo, CABA">
+            </div>
+            <div class="event-planner-field event-planner-field-full">
+              <label for="eventDetails">Detalles, preferencias o restricciones alimentarias</label>
+              <textarea id="eventDetails" name="eventDetails" rows="3" placeholder="Contanos qué tenés en mente, si hay alergias o algún detalle importante."></textarea>
+            </div>
+          </div>
+          <p class="event-planner-required">* Campos obligatorios</p>
+          <div class="event-planner-actions">
+            <button class="btn btn-secondary event-planner-cancel" id="cancelEventPlanner" type="button">Ahora no</button>
+            <button type="submit" class="btn btn-whatsapp">Continuar por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
 
   <!-- LIBRERÍA FANCYBOX Y SCRIPT DE INTERACTIVIDAD -->
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
