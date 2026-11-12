@@ -109,7 +109,7 @@ const serviceModalPrev = document.getElementById('serviceModalPrev');
 const serviceModalNext = document.getElementById('serviceModalNext');
 const contactSection = document.getElementById('contacto');
 const contactLinks = document.querySelectorAll('a[href="#contacto"]');
-const whatsappButton = document.querySelector('.btn-whatsapp');
+const whatsappButton = document.getElementById('quickEventInquiryButton');
 const serviceOrder = ['menu', 'salados', 'dulce', 'viandas'];
 let currentServiceIndex = 0;
 let contactHighlightTimeout;
@@ -215,6 +215,22 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && serviceModal.classList.contains('is-open')) {
     closeServiceModal();
   }
+  if (event.key === 'Escape' && eventPlannerModal.classList.contains('is-open')) {
+    closeEventPlanner();
+  }
+  if (event.key === 'Tab' && eventPlannerModal.classList.contains('is-open')) {
+    const focusableElements = eventPlannerModal.querySelectorAll('button, input, select, textarea');
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  }
   if (event.key === 'ArrowLeft' && serviceModal.classList.contains('is-open')) {
     showAdjacentService(-1);
   }
@@ -255,6 +271,114 @@ loadMoreBtn.addEventListener('click', () => {
   if (document.querySelectorAll('.gallery-grid a.hidden-img').length === 0) {
     loadMoreBtn.textContent = 'Ver menos';
   }
+});
+
+// 3. Planificación de la fecha del evento
+const eventPlanner = document.getElementById('eventPlanner');
+const eventDate = document.getElementById('eventDate');
+const quickEventInquiry = document.getElementById('quickEventInquiry');
+const quickEventDate = document.getElementById('quickEventDate');
+const guestCount = document.getElementById('guestCount');
+const eventPlannerModal = document.getElementById('eventPlannerModal');
+const eventPlannerTitle = document.getElementById('eventPlannerTitle');
+const openEventPlannerButtons = document.querySelectorAll('.open-event-planner');
+const closeEventPlannerButton = document.getElementById('closeEventPlanner');
+const cancelEventPlannerButton = document.getElementById('cancelEventPlanner');
+const whatsappNumber = '5491124750836';
+let eventPlannerOpener;
+
+const setEventDateMinimum = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const minimumDate = `${year}-${month}-${day}`;
+  eventDate.min = minimumDate;
+  quickEventDate.min = minimumDate;
+};
+
+const openEventPlanner = () => {
+  eventPlannerOpener = document.activeElement;
+  setEventDateMinimum();
+  eventPlannerModal.removeAttribute('inert');
+  eventPlannerModal.classList.add('is-open');
+  eventPlannerModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  eventPlannerTitle.focus();
+};
+
+const closeEventPlanner = () => {
+  eventPlannerModal.classList.remove('is-open');
+  eventPlannerModal.setAttribute('aria-hidden', 'true');
+  eventPlannerModal.setAttribute('inert', '');
+  document.body.style.overflow = '';
+  if (eventPlannerOpener) eventPlannerOpener.focus();
+};
+
+setEventDateMinimum();
+window.addEventListener('focus', setEventDateMinimum);
+
+openEventPlannerButtons.forEach((button) => button.addEventListener('click', openEventPlanner));
+closeEventPlannerButton.addEventListener('click', closeEventPlanner);
+cancelEventPlannerButton.addEventListener('click', closeEventPlanner);
+eventPlannerModal.addEventListener('click', (event) => {
+  if (event.target === eventPlannerModal) closeEventPlanner();
+});
+
+quickEventInquiry.addEventListener('submit', (event) => {
+  event.preventDefault();
+  setEventDateMinimum();
+
+  if (!quickEventInquiry.reportValidity()) return;
+
+  const [year, month, day] = quickEventDate.value.split('-').map(Number);
+  const formattedDate = new Date(year, month - 1, day).toLocaleDateString('es-AR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+  const message = `Hola, quisiera solicitar información y una cotización para un evento el ${formattedDate}. ¿Me podrían brindar más detalles? Gracias.`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+});
+
+eventPlanner.addEventListener('submit', (event) => {
+  event.preventDefault();
+  setEventDateMinimum();
+
+  if (!eventPlanner.reportValidity()) return;
+
+  const [year, month, day] = eventDate.value.split('-').map(Number);
+  const formattedDate = new Date(year, month - 1, day).toLocaleDateString('es-AR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+  const formData = new FormData(eventPlanner);
+  const guests = formData.get('guestCount');
+  const eventType = formData.get('eventType') || 'A definir';
+  const eventMenu = formData.get('eventMenu') || 'A definir';
+  const eventLocation = formData.get('eventLocation');
+  const eventDetails = formData.get('eventDetails');
+  const optionalDetails = [
+    eventLocation ? `Lugar o localidad: ${eventLocation}` : '',
+    eventDetails ? `Detalles y restricciones: ${eventDetails}` : '',
+  ].filter(Boolean);
+  const message = [
+    'Hola, quisiera consultar por un evento.',
+    `Fecha: ${formattedDate}`,
+    `Cantidad de comensales: ${guests}`,
+    `Tipo de evento: ${eventType}`,
+    `Servicio de interés: ${eventMenu}`,
+    ...optionalDetails,
+    '¿Podrían contactarme para conversar sobre una propuesta? Gracias.',
+  ].join('\n');
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  eventPlanner.reset();
+  closeEventPlanner();
 });
 
 // 3. Navegación rápida al salir de la portada
