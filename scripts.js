@@ -24,7 +24,7 @@ const setTheme = (isDark) => {
   themeToggle.setAttribute('aria-pressed', String(isDark));
   themeToggle.setAttribute('aria-label', isDark ? 'Activar modo claro' : 'Activar modo oscuro');
   themeToggle.title = isDark ? 'Modo claro' : 'Modo oscuro';
-  themeToggleIcon.textContent = isDark ? '☾' : '☀';
+  themeToggleIcon.textContent = isDark ? '🌙' : '☀️';
 };
 
 setTheme(savedTheme === 'dark');
