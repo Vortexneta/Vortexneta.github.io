@@ -331,13 +331,16 @@ quickEventInquiry.addEventListener('submit', (event) => {
 
   if (!quickEventInquiry.reportValidity()) return;
 
-  const [year, month, day] = quickEventDate.value.split('-').map(Number);
-  const formattedDate = new Date(year, month - 1, day).toLocaleDateString('es-AR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-  const message = `Hola, quisiera solicitar información y una cotización para un evento el ${formattedDate}. ¿Me podrían brindar más detalles? Gracias.`;
+  let formattedDate = '';
+  if (quickEventDate.value) {
+    const [year, month, day] = quickEventDate.value.split('-').map(Number);
+    formattedDate = new Date(year, month - 1, day).toLocaleDateString('es-AR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+  }
+  const message = `Hola, quisiera solicitar información y una cotización para un evento${formattedDate ? ` el ${formattedDate}` : ''}. ¿Me podrían brindar más detalles? Gracias.`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
