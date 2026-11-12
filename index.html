@@ -231,7 +231,15 @@
         <p>Escribinos por WhatsApp para coordinar una degustación o cotización rápida.</p>
         <form class="quick-event-inquiry" id="quickEventInquiry">
           <label for="quickEventDate">Fecha del evento</label>
-          <input id="quickEventDate" name="eventDate" type="date" aria-describedby="quickEventInquiryHint">
+          <div class="quick-event-date-field">
+            <input id="quickEventDate" name="eventDate" type="date" aria-describedby="quickEventInquiryHint">
+            <button type="button" class="quick-event-date-calendar" id="quickEventCalendarButton" aria-label="Abrir calendario">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="5" width="17" height="15" rx="2"></rect>
+                <path d="M7.5 3.5v3M16.5 3.5v3M3.5 9h17"></path>
+              </svg>
+            </button>
+          </div>
           <p class="quick-event-inquiry-hint" id="quickEventInquiryHint">
             <span aria-hidden="true">↓</span>
             La fecha es opcional; podés consultar por WhatsApp sin completarla.

@@ -278,6 +278,7 @@ const eventPlanner = document.getElementById('eventPlanner');
 const eventDate = document.getElementById('eventDate');
 const quickEventInquiry = document.getElementById('quickEventInquiry');
 const quickEventDate = document.getElementById('quickEventDate');
+const quickEventCalendarButton = document.getElementById('quickEventCalendarButton');
 const guestCount = document.getElementById('guestCount');
 const eventPlannerModal = document.getElementById('eventPlannerModal');
 const eventPlannerTitle = document.getElementById('eventPlannerTitle');
@@ -317,6 +318,16 @@ const closeEventPlanner = () => {
 
 setEventDateMinimum();
 window.addEventListener('focus', setEventDateMinimum);
+
+quickEventCalendarButton.addEventListener('click', () => {
+  if (typeof quickEventDate.showPicker === 'function') {
+    quickEventDate.showPicker();
+    return;
+  }
+
+  quickEventDate.focus();
+  quickEventDate.click();
+});
 
 openEventPlannerButtons.forEach((button) => button.addEventListener('click', openEventPlanner));
 closeEventPlannerButton.addEventListener('click', closeEventPlanner);
