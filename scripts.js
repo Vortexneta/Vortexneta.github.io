@@ -27,7 +27,7 @@ const setTheme = (isDark) => {
   themeToggleIcon.textContent = isDark ? '🌙' : '☀️';
 };
 
-setTheme(savedTheme === 'dark');
+setTheme(savedTheme !== 'light');
 themeToggle.addEventListener('click', () => {
   const isDark = document.documentElement.dataset.theme !== 'dark';
   setTheme(isDark);

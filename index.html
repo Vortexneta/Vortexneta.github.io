@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,8 +30,8 @@
       </ul>
     </nav>
     <div class="theme-control">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false" title="Modo oscuro"></button>
-      <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☀</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar modo claro" aria-pressed="true" title="Modo claro"></button>
+      <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">🌙</span>
     </div>
   </header>
 
@@ -40,13 +40,24 @@
     <div class="hero-content">
       <h2>Gastronomía inolvidable para tus momentos especiales</h2>
       <p>Nos encargamos del menú de tu casamiento, cumpleaños o evento corporativo con la mejor calidad y dedicación.</p>
-      <div class="hero-plan-cta">
-        <button class="btn btn-whatsapp btn-plan-event open-event-planner" type="button" aria-haspopup="dialog" aria-controls="eventPlannerModal">Planificar evento</button>
-      </div>
       <div class="hero-buttons">
         <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
         <a href="#servicios" class="btn btn-secondary">Ver Menús</a>
       </div>
+    </div>
+  </section>
+
+  <section class="event-planner-promo" aria-labelledby="eventPlannerPromoTitle">
+    <div class="event-planner-promo-content">
+      <div class="event-planner-promo-copy">
+        <p class="eyebrow">Tu celebración empieza acá</p>
+        <h2 id="eventPlannerPromoTitle">¿Estás organizando un evento?</h2>
+        <p>Contanos la fecha, cuántas personas asistirán y qué propuesta te interesa. Con esos datos preparamos tu consulta para continuar por WhatsApp.</p>
+      </div>
+      <button class="btn btn-whatsapp btn-plan-event open-event-planner" type="button" aria-haspopup="dialog" aria-controls="eventPlannerModal">
+        <span>Planificar mi evento</span>
+        <span aria-hidden="true">→</span>
+      </button>
     </div>
   </section>
 
